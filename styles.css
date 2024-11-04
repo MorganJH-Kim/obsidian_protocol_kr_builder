@@ -1,0 +1,320 @@
+:root {
+  --bright-white: #ffffff;
+  --light-gray: #f9fafb;
+  --orange-primary: #ff6f00;
+  --orange-light: #ff9800;
+  --orange-dark: #e65100;
+  --text-dark: #37474f;
+  --border-color: #e0e0e0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--light-gray);
+  color: var(--text-dark);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  height: 100vh;
+  position: relative;
+}
+
+.left-panel {
+  width: 300px;
+  flex-shrink: 0;
+  background-color: var(--bright-white);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
+  height: calc(100vh - 3rem);
+}
+
+.main-panel {
+  flex-grow: 1;
+  background-color: var(--bright-white);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
+  height: calc(100vh - 3rem);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.controls {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.btn-industrial {
+  background-color: var(--orange-primary);
+  color: white;
+  border: none;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-industrial:hover {
+  background-color: var(--orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(255, 111, 0, 0.15);
+  color: white;
+}
+
+.robot-slots,
+.drone-slots {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.robot-slot,
+.drone-slot {
+  background-color: var(--light-gray);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.robot-slot:hover,
+.drone-slot:hover {
+  border-color: var(--orange-primary);
+  box-shadow: 0 3px 6px rgba(255, 111, 0, 0.1);
+}
+
+.total-points {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--bright-white);
+  color: var(--orange-primary);
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+#default-message {
+  color: #707070;
+  text-align: center;
+  padding: 2.5rem;
+  font-size: 1.1rem;
+  border: 2px dashed #e3e3e3;
+  border-radius: 10px;
+  margin: 1.5rem;
+  background-color: var(--light-gray);
+}
+
+.robot-slot input[type="text"],
+.drone-slot input[type="text"] {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.45rem;
+  color: var(--text-dark);
+  width: 70%;
+  font-size: 14px;
+}
+
+.robot-slot input[type="text"]:focus,
+.drone-slot input[type="text"]:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 2px rgba(255, 111, 0, 0.1);
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.45rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-primary);
+}
+.robot-parts-grid,
+.drone-parts-grid {
+  padding: 1rem;
+}
+
+.parts-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.drone-parts-grid .parts-row {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;
+}
+
+.part-card {
+  background: var(--bright-white);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.part-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.part-card-header {
+  padding: 1rem;
+  background: var(--light-gray);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.part-card-header h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--orange-dark);
+  font-size: 1rem;
+}
+
+.part-card-header select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bright-white);
+  color: var(--text-dark);
+}
+
+.part-card-header select:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 2px rgba(255, 111, 0, 0.1);
+}
+
+.part-card-body {
+  padding: 1rem;
+}
+
+.part-image {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-gray);
+  border-radius: 6px;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+.part-image.empty {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--light-gray),
+    var(--light-gray) 10px,
+    var(--bright-white) 10px,
+    var(--bright-white) 20px
+  );
+  color: #999;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-gray);
+  border: 2px dashed var(--orange-light);
+}
+
+/* 반응형 디자인 수정 */
+@media (max-width: 1200px) {
+  .parts-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .drone-parts-grid .parts-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .parts-row,
+  .drone-parts-grid .parts-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* 반응형 디자인 수정 */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .left-panel,
+  .main-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .total-points {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+  }
+}
